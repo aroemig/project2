@@ -1,0 +1,129 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Feedr @ GA</title>
+  <link rel="stylesheet" href="styles/normalize.css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="styles/html5bp.css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="styles/style.css" media="screen" charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>  
+
+            **use handlebars to insert articles, make ajax request to dig site, ***ajax exercise, handlebars exercise, all exercises will have info to make this, weather exercise c&p and modify html from weather, handlebars helpers lesson 9 practice maybe for tags display, toggle class function in jQurey, 
+            <![endif]-->
+
+            <header>
+              <section class="container">
+                <a href="#"><h1>Feedr</h1></a>
+                <nav>
+                  <ul>
+                    <li><a href="#">News Source: <span></span></a>
+                      <ul>
+                        <li><a id="digg_link">Digg News</a></li>
+                        <li><a id="reddit_link">Reddit News</a></li>
+                        <li><a id="google_link">Google News</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <section id="search">
+                    <input type="text" name="name" value="">
+                    <a href="#"><img src="images/search.png" alt="" /></a>
+                  </section>
+                </nav>
+                <div class="clearfix"></div>
+              </section>
+            </header>
+            <!-- jquery event handler on events putting in, ie links open, whenever link is clicked log artice to console. when someone clicks on article remove 2 class, loader hidden, close pop and have article pop up, **remove a class from jquery, in jquery guide empty articles so new feed comes back, watch out for loading guide so don't delete, -->
+
+            <div id="popUp" class="loader hidden">  
+              <a href="#" class="closePopUp">X</a>
+              <div class="container">
+                <h1>Test Title</h1>
+                <p>
+                 Test description
+               </p>
+               <a href="#" class="popUpAction" target="_blank">Read more from source</a>
+             </div>
+           </div>
+
+
+           <section id="main" class="container">
+
+
+           </section>
+
+           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+           <script src="js/app.js"></script>
+
+           
+
+           <script id="diggTemplate" type="text/x-handlebars-template">
+
+            <article class="article">
+              <section class="featuredImage">
+                <img src= '{{content.media.images.0.url}}' alt="" />
+              </section>
+              <section class="articleContent">
+               <a href="#" class="contentTitle"><h3>{{content.title}}</h3> </a> 
+              </section>
+
+              <section class="impressions">
+                {{diggs.count}}
+              </section>
+
+              <div class="clearfix"></div>
+            </article>
+
+          </script>
+
+
+          <script id="redditTemplate" type="text/x-handlebars-template">
+
+            <article class="article">
+              <section class="featuredImage">
+                <img src= "images/Reddit_logo-2.jpg" alt="" />
+              </section>
+              <section class="articleContent">
+                <a href="#" class="contentTitle"><h3>{{data.title}}</h3></a>
+              </section>
+
+              <section class="impressions">
+                {{data.score}}
+              </section>
+
+              <div class="clearfix"></div>
+            </article>
+
+
+          </script>
+
+        <script id="googleTemplate" type="text/x-handlebars-template">
+          <!--{log this} -->
+            <article class="article">
+              <section class="featuredImage">
+                <img src= "images/google_logo.jpg" alt="" />
+              </section>
+              <section class="articleContent">
+                <a href="{{link}}" target="_blank" class="linkTitle"><h3>{{title}}</h3></a>
+              </section>
+
+              <div class="clearfix"></div>
+            </article>
+
+
+          </script>
+
+
+        </body>
+        </html>
